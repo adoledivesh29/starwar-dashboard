@@ -1,7 +1,7 @@
 "use client";
 
 import { Starship, StarshipDetails } from "@/lib/types";
-import { Star, Users, Zap, Plus, Minus, ExternalLink } from "lucide-react";
+import { Star, Users, Zap, Plus, Minus } from "lucide-react";
 import { useCompare } from "@/hooks/useCompare";
 import { useStarshipDetails } from "@/hooks/useStarships";
 import { motion } from "framer-motion";

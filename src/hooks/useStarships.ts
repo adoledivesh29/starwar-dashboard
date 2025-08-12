@@ -1,8 +1,8 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState, useCallback } from "react";
-import { ApiResponse, Starship, StarshipDetails } from "@/lib/types";
+import { useMemo } from "react";
+import { ApiResponse, Starship } from "@/lib/types";
 
 // Hook to fetch only basic starships data (no details)
 export function useBasicStarships() {

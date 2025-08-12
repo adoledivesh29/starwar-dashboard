@@ -1,7 +1,7 @@
 "use client";
 
-import { Starship } from "@/lib/types";
-import { Star, ExternalLink, Eye, Plus, Check, Search } from "lucide-react";
+import { Starship, StarshipDetails } from "@/lib/types";
+import { Star, Eye, Plus, Check, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCompare } from "@/hooks/useCompare";
 import { useToast } from "@/components/Toast";
@@ -24,7 +24,28 @@ export function StarshipTable({ starships, isLoading, searchQuery }: StarshipTab
 
     const handleAddToComparison = (starship: Starship) => {
         try {
-            addStarship(starship);
+            // Create a minimal StarshipDetails object with available data
+            const minimalStarship: StarshipDetails = {
+                uid: starship.uid,
+                name: starship.name,
+                model: "Loading...",
+                manufacturer: "Loading...",
+                crew: "Loading...",
+                hyperdrive_rating: "Loading...",
+                cost_in_credits: "Loading...",
+                length: "Loading...",
+                max_atmosphering_speed: "Loading...",
+                passengers: "Loading...",
+                cargo_capacity: "Loading...",
+                consumables: "Loading...",
+                vehicle_class: "Loading...",
+                pilots: [],
+                films: [],
+                created: "",
+                edited: "",
+            };
+
+            addStarship(minimalStarship);
             success(`${starship.name} added to comparison`);
         } catch (err) {
             if (err instanceof Error) {

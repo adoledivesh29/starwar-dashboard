@@ -16,7 +16,7 @@ export function CompareModal({ isOpen, onClose }: CompareModalProps) {
 
     // Fetch details only for selected starships
     const uids = selectedStarships.map(starship => starship.uid);
-    const { data: starshipDetails, isLoading, isError } = useMultipleStarshipDetails(uids);
+    const { data: starshipDetails } = useMultipleStarshipDetails(uids);
 
     return (
         <AnimatePresence>
