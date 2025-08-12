@@ -1,4 +1,4 @@
 import { atom } from "jotai";
-import { Starship } from "@/lib/types";
+import { StarshipDetails } from "@/lib/types";
 
-export const selectedStarshipsAtom = atom<Starship[]>([]);
+export const selectedStarshipsAtom = atom<StarshipDetails[]>([]);

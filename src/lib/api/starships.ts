@@ -1,5 +1,5 @@
 import { initContract } from "@ts-rest/core";
-import { Starship, ApiResponse } from "../types";
+import { Starship, ApiResponse, StarshipDetails } from "../types";
 
 const c = initContract();
 
@@ -16,7 +16,7 @@ export const starshipContract = c.router({
         method: "GET",
         path: "/api/starships/:uid",
         responses: {
-            200: c.type<{ result: { properties: any } }>(),
+            200: c.type<{ result: { properties: StarshipDetails } }>(),
         },
     },
 });

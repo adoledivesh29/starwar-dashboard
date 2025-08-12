@@ -2,8 +2,9 @@
 
 import { useCompare } from "@/hooks/useCompare";
 import { useStarshipDetails, useMultipleStarshipDetails } from "@/hooks/useStarships";
-import { X, Star, Users, Zap, Loader } from "lucide-react";
+import { X, Star, Loader } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { StarshipDetails } from "@/lib/types";
 
 interface CompareModalProps {
     isOpen: boolean;
@@ -104,7 +105,7 @@ export function CompareModal({ isOpen, onClose }: CompareModalProps) {
 }
 
 interface StarshipComparisonCardProps {
-    starship: any;
+    starship: StarshipDetails;
     onRemove: () => void;
 }
 

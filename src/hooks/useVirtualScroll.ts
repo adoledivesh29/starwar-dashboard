@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useRef, useState, useCallback } from "react";
 import { calculateVisibleRange } from "@/utils/performance";
 
 interface UseVirtualScrollOptions {

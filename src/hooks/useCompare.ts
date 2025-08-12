@@ -2,12 +2,12 @@
 
 import { useAtom } from "jotai";
 import { selectedStarshipsAtom } from "@/state/selectedStarshipsAtom";
-import { Starship } from "@/lib/types";
+import { StarshipDetails } from "@/lib/types";
 
 export function useCompare() {
     const [selectedStarships, setSelectedStarships] = useAtom(selectedStarshipsAtom);
 
-    const addStarship = (starship: Starship) => {
+    const addStarship = (starship: StarshipDetails) => {
         if (selectedStarships.length >= 3) {
             throw new Error("Maximum 3 starships can be compared");
         }

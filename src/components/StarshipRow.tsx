@@ -1,6 +1,6 @@
 "use client";
 
-import { Starship } from "@/lib/types";
+import { Starship, StarshipDetails } from "@/lib/types";
 import { Star, Users, Zap, Plus, Minus, ExternalLink } from "lucide-react";
 import { useCompare } from "@/hooks/useCompare";
 import { useStarshipDetails } from "@/hooks/useStarships";
@@ -22,17 +22,48 @@ export function StarshipRow({ starship, onSelect }: StarshipRowProps) {
             } else {
                 // We need to create a detailed starship object for comparison
                 if (details?.result) {
-                    const detailedStarship = {
+                    const detailedStarship: StarshipDetails = {
                         uid: starship.uid,
                         name: starship.name,
                         model: details.result.properties.model,
                         manufacturer: details.result.properties.manufacturer,
                         crew: details.result.properties.crew,
                         hyperdrive_rating: details.result.properties.hyperdrive_rating,
+                        cost_in_credits: details.result.properties.cost_in_credits,
+                        length: details.result.properties.length,
+                        max_atmosphering_speed: details.result.properties.max_atmosphering_speed,
+                        passengers: details.result.properties.passengers,
+                        cargo_capacity: details.result.properties.cargo_capacity,
+                        consumables: details.result.properties.consumables,
+                        vehicle_class: details.result.properties.vehicle_class,
+                        pilots: details.result.properties.pilots,
+                        films: details.result.properties.films,
+                        created: details.result.properties.created,
+                        edited: details.result.properties.edited,
                     };
-                    addStarship(detailedStarship as any);
+                    addStarship(detailedStarship);
                 } else {
-                    addStarship(starship as any);
+                    // Create minimal StarshipDetails with available data
+                    const minimalStarship: StarshipDetails = {
+                        uid: starship.uid,
+                        name: starship.name,
+                        model: "Unknown",
+                        manufacturer: "Unknown",
+                        crew: "Unknown",
+                        hyperdrive_rating: "Unknown",
+                        cost_in_credits: "Unknown",
+                        length: "Unknown",
+                        max_atmosphering_speed: "Unknown",
+                        passengers: "Unknown",
+                        cargo_capacity: "Unknown",
+                        consumables: "Unknown",
+                        vehicle_class: "Unknown",
+                        pilots: [],
+                        films: [],
+                        created: "",
+                        edited: "",
+                    };
+                    addStarship(minimalStarship);
                 }
             }
         } catch (error) {

@@ -144,7 +144,7 @@ export default function Home() {
               <SearchBar onSearch={handleSearch} initialValue={searchQuery} />
               {searchQuery && data && (
                 <div className="text-sm text-muted-foreground">
-                  Found {data.totalRecords} starship{data.totalRecords !== 1 ? 's' : ''} for "{searchQuery}"
+                  Found {data.totalRecords} starship{data.totalRecords !== 1 ? 's' : ''} for &quot;{searchQuery}&quot;
                 </div>
               )}
             </div>
