@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useStarshipsWithPagination } from "@/hooks/useStarships";
 import { useCompare } from "@/hooks/useCompare";
@@ -14,7 +14,8 @@ import { Scale, X, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 
-export default function Home() {
+// Separate component that uses useSearchParams
+function HomeContent() {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
@@ -250,5 +251,14 @@ export default function Home() {
         onClose={handleCloseCompareModal}
       />
     </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function Home() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <HomeContent />
+    </Suspense>
   );
 }
